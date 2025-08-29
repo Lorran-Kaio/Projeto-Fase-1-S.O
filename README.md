@@ -1,4 +1,4 @@
-Descrição
+Descrição:
  
 Este repositório contém o código-fonte do projeto prático da disciplina de Sistemas Operacionais, desenvolvido como parte do curso de Sistemas de Informação.
 
