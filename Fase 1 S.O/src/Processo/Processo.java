@@ -21,7 +21,7 @@ public class Processo {
 		return quantidadeInstrucoes;
 	}
 
-	public void setQuantidadeInstrcoes(int quantidadeInstrucoes) {
+	public void setQuantidadeInstrucoes(int quantidadeInstrucoes) {
 		this.quantidadeInstrucoes = quantidadeInstrucoes;
 	}
 	
@@ -43,3 +43,4 @@ public class Processo {
 	}	
 
 }
+
