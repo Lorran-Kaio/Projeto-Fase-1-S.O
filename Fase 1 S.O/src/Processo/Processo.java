@@ -26,8 +26,10 @@ public class Processo {
 	}
 	
 	public void executarInstrucoes(){
-		if(quantidadeInstrucoes > 0);
+		if(quantidadeInstrucoes > 0){
 		quantidadeInstrucoes--;
+	
+		}
 	}
 	
 	public boolean estaFinalizado(){
@@ -39,4 +41,5 @@ public class Processo {
 		return "Processo [id=" + id + ", quantidadeInstrucoes="
 				+ quantidadeInstrucoes + "]";
 	}	
+
 }
