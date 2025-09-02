@@ -23,17 +23,8 @@ public class Process {
 		this.instructions = instructions;
 	}
 	
-	public void executeInstructions(){
-		if(instructions > 0){
-
-			instructions--;
-		};
-	}
-	
 	public boolean finished(){
 		return instructions == 0;
 	}
-	
-	
 	
 }

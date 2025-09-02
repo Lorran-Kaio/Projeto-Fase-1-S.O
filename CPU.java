@@ -10,20 +10,23 @@ class CPU {
         this.gui = gui;
         this.allProcesses = allProcesses;
     }
+
+   
+    private void executeInstructions(Process process) {
+        if (process.getInstructions() > 0) {
+            process.setInstructions(process.getInstructions() - 1);
+        }
+    }
     
     public void execute() {
-        
-        // i < 5 = quantidade de processos
         for (int i = 0; i < 5; i++) {
             Process newProcess = generator.generateProcess();
             scheduler.addProcess(newProcess);
             allProcesses.add(newProcess);
         }
         
-        
         updateGUI(null);
         
-        // Tempo antes de inicializar 
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
@@ -35,7 +38,6 @@ class CPU {
             
             if (process == null) continue;
             
-            
             updateGUI(process);
             
             System.out.println("Executing process: " + process.getId());
@@ -43,13 +45,11 @@ class CPU {
             if (scheduler.getAlgorithm() == Scheduler.Algorithm.RR) {
                 for (int i = 0; i < scheduler.getQuantum(); i++) {
                     if (process.finished()) break;
-                    // Se o processo for RR, executa as instrunções de acordo com o quantum
-                    process.executeInstructions();
                     
+                    executeInstructions(process);
                     
                     updateGUI(process);
                     try {
-                        // Animação da execução das instrunções
                         Thread.sleep(100); 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -65,12 +65,11 @@ class CPU {
                 }
             } else {
                 while (!process.finished()) {
-                    process.executeInstructions();
                     
+                    executeInstructions(process);
                     
                     updateGUI(process);
                     try {
-                        // Animação da execução das instrunções
                         Thread.sleep(100); 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -79,14 +78,11 @@ class CPU {
                 System.out.println("Process " + process.getId() + " finished");
             }
             
-            
             try {
-                //tempo entre a execução de cada processo
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
             
             updateGUI(null);
         }
