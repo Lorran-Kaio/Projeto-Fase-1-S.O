@@ -63,12 +63,28 @@ public class ProcessSchedulerGUI extends JFrame {
     
     public void startSimulation(Scheduler.Algorithm algorithm) {
         int quantum = 5;
-        try {
+        while (true) {
+            
+            try {
             quantum = Integer.parseInt(quantumField.getText());
+
+            if (quantum > 0){
+                break;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Invalid input. Type a number greater than 0!");
+                quantumField.setText("");
+                return;
+            }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Valor de quantum inválido! Usando padrão 5.");
+            JOptionPane.showMessageDialog(this, "Invalid input. Type a number!");
+            quantumField.setText("");
+            
+            return;
         }
 
+        }
+        
         scheduler = new Scheduler(algorithm, quantum);
         cpu = new CPU(scheduler, generator, this, allProcesses);
 
@@ -92,6 +108,7 @@ public class ProcessSchedulerGUI extends JFrame {
         fcfsButton.setEnabled(true);
         sjfButton.setEnabled(true);
         rrButton.setEnabled(true);
+        quantumField.setText("");
         quantumField.setEnabled(true);
 
        
