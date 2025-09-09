@@ -25,22 +25,7 @@ public class Processo {
 		this.quantidadeInstrucoes = quantidadeInstrucoes;
 	}
 	
-	public void executarInstrucoes(){
-		if(quantidadeInstrucoes > 0){
-		quantidadeInstrucoes--;
-	
-		}
-	}
-	
 	public boolean estaFinalizado(){
 		return quantidadeInstrucoes == 0;
-	}
-
-	@Override
-	public String toString() {
-		return "Processo [id=" + id + ", quantidadeInstrucoes="
-				+ quantidadeInstrucoes + "]";
 	}	
-
 }
-
